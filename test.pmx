@@ -1,0 +1,25 @@
+---
+name: test
+description: ''
+keywords: ''
+type: Default
+documentation: |2+
+
+images:
+- name: DB_1
+  source: dharmamike/dc-pgsql:latest
+  category: DB Tier
+  type: Default
+  ports:
+  - host_port: '5432'
+    container_port: '5432'
+- name: Rails
+  source: dharmamike/dc-rails:latest
+  category: Web Tier
+  type: Default
+  ports:
+  - host_port: '8080'
+    container_port: '3000'
+  links:
+  - service: DB_1
+    alias: DB_1
